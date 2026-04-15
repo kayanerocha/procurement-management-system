@@ -31,7 +31,6 @@ const success = ref(null);
 async function submit() {
     try {
         loading.value = true;
-        success.value = false;
 
         await axios.post('/api/suppliers', form.value);
 
@@ -50,7 +49,9 @@ async function submit() {
         success.value = true;
     } catch (error) {
         errors.value = error.response?.data?.errors;
-        success.value = false;
+        if (!errors.value) {
+            success.value = false;
+        }
     } finally {
         loading.value = false;
     }

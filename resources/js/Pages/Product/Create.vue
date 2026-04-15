@@ -46,7 +46,6 @@ async function submit() {
     } catch (error) {
         errors.value = error.response?.data?.errors;
         if (!errors.value) {
-            console.log('entrou');
             success.value = false;
         }
     } finally {

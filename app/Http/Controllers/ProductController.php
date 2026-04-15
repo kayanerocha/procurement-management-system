@@ -16,6 +16,11 @@ class ProductController extends Controller
         return Inertia::render('Product/Index');
     }
 
+    public function show(Product $product)
+    {
+        return Inertia::render('Product/Show', ['product' => $product]);
+    }
+
     public function create()
     {
         return Inertia::render('Product/Create');

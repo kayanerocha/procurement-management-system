@@ -129,4 +129,13 @@ class SupplierController extends Controller
     {
         //
     }
+
+    public function activeSuppliers()
+    {
+        Log::info('aqui');
+        throw new Exception();
+        $suppliers = Supplier::where('status', 1)->get();
+        Log::info($suppliers);
+        return response()->json($suppliers);
+    }
 }

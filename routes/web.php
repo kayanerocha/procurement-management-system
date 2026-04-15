@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SupplierController;
@@ -31,7 +32,11 @@ Route::resource('suppliers', SupplierController::class)->only([
 ]);
 
 Route::resource('products', ProductController::class)->only([
-    'index', 'create', 'edit'
+    'index', 'show', 'create', 'edit'
+])->name('show', 'product.show');
+
+Route::resource('orders', OrderController::class)->only([
+    'index', 'show', 'create', 'edit'
 ]);
 
 require __DIR__.'/auth.php';
