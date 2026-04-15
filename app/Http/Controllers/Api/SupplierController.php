@@ -19,14 +19,6 @@ class SupplierController extends Controller
     {
        $suppliers = Supplier::all();
        return response()->json($suppliers);
-    } 
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -82,14 +74,6 @@ class SupplierController extends Controller
     {
         $supplier = Supplier::find($id);
         return response()->json($supplier);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
     }
 
     /**

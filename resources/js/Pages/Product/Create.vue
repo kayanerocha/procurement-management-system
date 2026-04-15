@@ -11,17 +11,15 @@ import { ref } from 'vue';
 
 const form = ref({
     name: '',
-    cnpj: '',
-    email: '',
-    phone: '',
+    description: '',
+    internal_code: '',
     status: '',
 });
 
 const errors = ref({
     name: null,
-    cnpj: null,
-    email: null,
-    phone: null,
+    description: null,
+    internal_code: null,
     status: null,
 });
 
@@ -31,26 +29,26 @@ const success = ref(null);
 async function submit() {
     try {
         loading.value = true;
-        success.value = false;
 
-        await axios.post('/api/suppliers', form.value);
+        await axios.post('/api/products', form.value);
 
         form.value.name = '';
-        form.value.cnpj = '';
-        form.value.email = '';
-        form.value.phone = '';
+        form.value.description = '';
+        form.value.internal_code = '';
         form.value.status = '';
 
         errors.value.name = null;
-        errors.value.cnpj = null;
-        errors.value.email = null;
-        errors.value.phone = null;
+        errors.value.description = null;
+        errors.value.internal_code = null;
         errors.value.status = null;
 
         success.value = true;
     } catch (error) {
         errors.value = error.response?.data?.errors;
-        success.value = false;
+        if (!errors.value) {
+            console.log('entrou');
+            success.value = false;
+        }
     } finally {
         loading.value = false;
     }
@@ -58,18 +56,18 @@ async function submit() {
 </script>
 
 <template>
-    <Head title="Cadastrar Fornecedor" />
+    <Head title="Cadastrar Produto" />
 
     <GuestLayout>
 
-        <Alert v-if="success == true" :message="'Forncecedor cadastrado com sucesso.'" :class="'text-green-600 bg-green-100'" />
-        <Alert v-if="success == false" :message="'Erro ao cadastrar fornecedor, entre em contato com um administrador.'" :class="'text-red-600 bg-red-100'" />
+        <Alert v-if="success == true" :message="'Produto cadastrado com sucesso.'" :class="'text-green-600 bg-green-100'" />
+        <Alert v-if="success == false" :message="'Erro ao cadastrar produto, entre em contato com um administrador.'" :class="'text-red-600 bg-red-100'" />
 
         <form @submit.prevent="submit">
             <div class="space-y-12">
                 <div class="border-b border-white/10 pb-12">
-                    <h2 class="text-base/7 font-semibold text-black">Fornecedor</h2>
-                    <p class="mt-1 text-sm/6 text-gray-400">Preencha as informações sobre o fornecedor.</p>
+                    <h2 class="text-base/7 font-semibold text-black">Produto</h2>
+                    <p class="mt-1 text-sm/6 text-gray-400">Preencha as informações sobre o produto.</p>
 
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                         <div class="col-span-full">
@@ -81,33 +79,26 @@ async function submit() {
                         </div>
 
                         <div class="col-span-full">
-                            <InputLabel for="cnpj" value="CNPJ" />
+                            <InputLabel for="description" value="Descrição" />
                             <div class="mt-2">
-                                <TextInput id="cnpj" type="text" class="mt-1 block w-full" v-model="form.cnpj" required autocomplete="cnpj" />
-                                <InputError class="mt-2" :message="errors.cnpj?.[0]" />
+                                <textarea id="description" rows="10" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" v-model="form.description" required>
+                                </textarea>
+                                <InputError class="mt-2" :message="errors.description?.[0]" />
                             </div>
                         </div>
 
                         <div class="col-span-full">
-                            <InputLabel for="email" value="E-mail" />
+                            <InputLabel for="internal_code" value="Código Interno" />
                             <div class="mt-2">
-                                <TextInput id="email" type="text" class="mt-1 block w-full" v-model="form.email" required autocomplete="email" />
-                                <InputError class="mt-2" :message="errors.email?.[0]" />
-                            </div>
-                        </div>
-
-                        <div class="col-span-full">
-                            <InputLabel for="phone" value="Telefone" />
-                            <div class="mt-2">
-                                <TextInput id="phone" type="text" class="mt-1 block w-full" v-model="form.phone" required autocomplete="phone" />
-                                <InputError class="mt-2" :message="errors.phone?.[0]" />
+                                <TextInput id="internal_code" type="text" class="mt-1 block w-full" v-model="form.internal_code" required autocomplete="internal_code" />
+                                <InputError class="mt-2" :message="errors.internal_code?.[0]" />
                             </div>
                         </div>
 
                         <div class="col-span-full">
                             <InputLabel for="name" value="Status" />
                             <div class="mt-2 grid grid-cols-1">
-                                <select id="status" name="status" autocomplete="status-name" class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" v-model="form.status">
+                                <select id="status" name="status" autocomplete="status-name" required class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" v-model="form.status">
                                     <option value="1">Ativo</option>
                                     <option value="0">Inativo</option>
                                 </select>
@@ -119,7 +110,7 @@ async function submit() {
             </div>
 
             <div class="mt-6 flex items-center justify-end gap-x-6">
-                <Link href="/suppliers">
+                <Link href="/products">
                     <button type="button" class="text-sm/6 font-semibold text-gray-400">Cancelar</button>
                 </Link>
                 <button type="submit" class="rounded-md bg-sky-600 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500">Salvar</button>

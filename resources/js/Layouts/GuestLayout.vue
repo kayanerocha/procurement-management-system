@@ -15,11 +15,11 @@ import { Link } from '@inertiajs/vue3';
                     Fornecedores
                 </Link>
 
-                <Link href="/users" class="block px-4 py-2 rounded hover:bg-gray-700">
+                <Link href="/products" class="block px-4 py-2 rounded hover:bg-gray-700">
                     Produtos
                 </Link>
 
-                <Link href="/settings" class="block px-4 py-2 rounded hover:bg-gray-700">
+                <Link href="#" class="block px-4 py-2 rounded hover:bg-gray-700">
                     Pedidos
                 </Link>
             </nav>

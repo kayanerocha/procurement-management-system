@@ -59,6 +59,12 @@ async function update() {
 
         await axios.put(`/api/suppliers/${supplier.value.id}`, form.value);
 
+        errors.value.name = null;
+        errors.value.cnpj = null;
+        errors.value.email = null;
+        errors.value.phone = null;
+        errors.value.status = null;
+
         success.value = true;
     } catch (error) {
         errors.value = error.response?.data?.errors;
@@ -70,7 +76,7 @@ async function update() {
 </script>
 
 <template>
-    <Head title="Cadastrar Fornecedor" />
+    <Head title="Editar Fornecedor" />
 
     <GuestLayout>
 
