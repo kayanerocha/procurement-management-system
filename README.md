@@ -49,6 +49,11 @@ Importante destacar que esse projeto utiliza Docker.
     $ http://localhost:8000/suppliers
     ```
 
+- Rodar o comando abaixo para a execução dos Jobs
+    ```bash
+    $ docker-compose exec -it app php artisan queue:work
+    ```
+
 ## Tecnologias
 
 **Front-end:** Vue.js, Node, Axios e TailwindCSS
