@@ -44,6 +44,11 @@ Importante destacar que esse projeto utiliza Docker.
     $ docker-compose exec node npm run dev
     ```
 
+- Acessar a rota abaixo:
+    ```bash
+    $ http://localhost:8000/suppliers
+    ```
+
 ## Tecnologias
 
 **Front-end:** Vue.js, Node, Axios e TailwindCSS
