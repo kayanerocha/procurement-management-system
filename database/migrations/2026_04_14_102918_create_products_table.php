@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', length: 50);
             $table->string('description', length: 500);
-            $table->string('internal_code', length: 10);
+            $table->string('internal_code', length: 10)->unique();
             $table->boolean('status');
             $table->timestamps();
         });

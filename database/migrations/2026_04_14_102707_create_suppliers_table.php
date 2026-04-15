@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
             $table->string('name', length: 100);
-            $table->string('cnpj', length: 14);
-            $table->string('email', length: 50);
-            $table->string('phone', length: 11);
+            $table->string('cnpj', length: 14)->unique();
+            $table->string('email', length: 50)->unique();
+            $table->string('phone', length: 11)->unique();
             $table->boolean('status');
             $table->timestamps();
         });

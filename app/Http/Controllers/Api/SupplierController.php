@@ -7,6 +7,7 @@ use App\Models\Supplier;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 
 class SupplierController extends Controller
@@ -35,9 +36,24 @@ class SupplierController extends Controller
     {
         $request->validate([
             'name' => 'required|min:2|max:100',
-            'cnpj' => 'required|min:14|max:14',
-            'email' => 'required|email|max:50',
-            'phone' => 'required|min:11|max:11',
+            'cnpj' => [
+                'required',
+                Rule::unique('suppliers', 'cnpj'),
+                'min:14',
+                'max:14',
+            ],
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('suppliers', 'email'),
+                'max:50',
+            ],
+            'phone' => [
+                'required',
+                Rule::unique('suppliers', 'phone'),
+                'min:11',
+                'max:11',
+            ],
             'status' => 'required|boolean|between:0,1'
         ]);
 
@@ -83,9 +99,24 @@ class SupplierController extends Controller
     {
         $request->validate([
             'name' => 'required|min:2|max:100',
-            'cnpj' => 'required|min:14|max:14',
-            'email' => 'required|email|max:50',
-            'phone' => 'required|min:11|max:11',
+            'cnpj' => [
+                'required',
+                Rule::unique('suppliers', 'cnpj'),
+                'min:14',
+                'max:14',
+            ],
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('suppliers', 'email'),
+                'max:50',
+            ],
+            'phone' => [
+                'required',
+                Rule::unique('suppliers', 'phone'),
+                'min:11',
+                'max:11',
+            ],
             'status' => 'required|boolean|between:0,1'
         ]);
 
