@@ -78,6 +78,7 @@ O driver está configurando no `.env` com a variável `QUEUE_CONNECTION=redis`.
 - Cadastro e autenticação de usuários;
 - Criar mais componentes reutilizáveis no frontend;
 - Melhorar a segurança das requisições;
+- Uso de Observers para logs;
 - Envio de notificações para o e-mail do fornecedor para cada pedido realizado com ele;
 - Disponibilizar para os fornecedores funcionalidades de atualização dos seus dados, produtos e acompanhar pedidos.
 

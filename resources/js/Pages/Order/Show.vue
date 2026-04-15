@@ -36,34 +36,6 @@ const fetchOrder = async () => {
     }
 };
 
-// const fetchLinkedSuppliers = async () => {
-//     try {
-//         const response = await axios.get(`/api/orders/${props.order.id}/linked-suppliers`);
-//         linkedSuppliers.value = response.data;
-//     } catch (error) {
-//         console.log(error);
-//     }
-// };
-
-// const fetchUnrelatedSuppliers = async () => {
-//     try {
-//         const response = await axios.get(`/api/orders/${props.order.id}/unrelated-suppliers`);
-//         unrelatedSuppliers.value = response.data;
-//     } catch (error) {
-//         console.log(error);
-//     }
-// };
-
-onMounted(() => {
-    fetchOrder();
-    // fetchLinkedSuppliers();
-    // fetchUnrelatedSuppliers();
-});
-
-// const linkSupplier = () => {
-//     linkingSupplier.value = true;
-// };
-
 const closeModal = () => {
     linkingSupplier.value = false;
 };
@@ -124,33 +96,6 @@ async function submit() {
                             <SuppliersTable :suppliers="linkedSuppliers"></SuppliersTable>
                         </dd>
                     </div>
-
-                    <!-- <div v-if="linkingSupplier" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                        <div class="bg-white rounded-lg w-full max-w-md p-6">                            
-                            <h2 class="text-lg font-semibold mb-4">Vincular parceiros</h2>
-
-                            <form @submit.prevent="submit">
-                                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dd class="mt-2 text-sm text-gray-600 sm:col-span-2 sm:mt-0">
-                                        <div class="space-y-2">
-                                            <label v-for="unrelatedSupplier in unrelatedSuppliers" :key="unrelatedSupplier.id" class="flex items-center gap-2">
-                                                <input type="checkbox" :value="unrelatedSupplier.id" v-model="form.selectedSuppliers"/>
-                                                {{ unrelatedSupplier.name }}
-                                            </label>
-                                        </div>
-                                    </dd>
-                                </div>
-
-                                <div class="flex justify-end gap-2">
-                                    <button type="button" @click="closeModal" class="px-3 py-1 border rounded">Cancelar</button>
-
-                                    <button @click="submit" :disabled="loading" type="submit" class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700">Salvar</button>
-
-                                    {{ loading ? 'Salvando...' : '' }}
-                                </div>
-                            </form>
-                        </div>
-                    </div> -->
                 </dl>
             </div>
         </div>
