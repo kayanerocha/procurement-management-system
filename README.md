@@ -24,7 +24,7 @@ Importante destacar que esse projeto utiliza Docker.
     - `DB_PASSWORD`
 
 - Inicie o ambiente Docker
-    > O Docker Desktop precisa estar em execução.
+    > Precisa ter Docker.
     ```
     $ docker-compose up -d --build
     ```
