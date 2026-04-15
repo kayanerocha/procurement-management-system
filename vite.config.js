@@ -17,4 +17,10 @@ export default defineConfig({
             },
         }),
     ],
+    server: {
+        host: '0.0.0.0', // Listen on all network interfaces
+        hmr: {
+            host: 'localhost', // Ensure the client still tries to connect to localhost
+        },
+    },
 });

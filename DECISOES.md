@@ -16,5 +16,5 @@ O banco de dados é composto por cinco tabelas, descritas abaixo:
 ## Uso de Filas e Jobs
 
 ## Melhorias
-- Autenticação
-- Envio de notificações para o e-mail do fornecedor
+- Cadastro e autenticação de usuários;
+- Envio de notificações para o e-mail do fornecedor para cada pedido realizado com ele;

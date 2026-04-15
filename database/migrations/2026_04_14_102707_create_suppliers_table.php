@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', length: 100);
             $table->string('cnpj', length: 14);
+            $table->string('email', length: 50);
             $table->string('phone', length: 11);
             $table->boolean('status');
             $table->timestamps();

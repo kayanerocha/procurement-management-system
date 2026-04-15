@@ -4,19 +4,31 @@ import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>
-    <div
-        class="flex min-h-screen flex-col items-center bg-gray-100 pt-6 sm:justify-center sm:pt-0"
-    >
-        <div>
-            <Link href="/">
-                <ApplicationLogo class="h-20 w-20 fill-current text-gray-500" />
-            </Link>
-        </div>
+    <div class="flex min-h-screen bg-gray-100">
+        <aside class="w-64 bg-gray-800 text-white flex flex-col">
+            <div class="p-4 text-lg font-bold border-b border-gray-700">
+                Meu Sistema
+            </div>
 
-        <div
-            class="mt-6 w-full overflow-hidden bg-white px-6 py-4 shadow-md sm:max-w-md sm:rounded-lg"
-        >
-            <slot />
-        </div>
+            <nav class="flex-1 p-4 space-y-2">
+                <Link href="/suppliers" class="block px-4 py-2 rounded hover:bg-gray-700">
+                    Fornecedores
+                </Link>
+
+                <Link href="/users" class="block px-4 py-2 rounded hover:bg-gray-700">
+                    Produtos
+                </Link>
+
+                <Link href="/settings" class="block px-4 py-2 rounded hover:bg-gray-700">
+                    Pedidos
+                </Link>
+            </nav>
+        </aside>
+
+        <main class="flex-1 p-6">
+            <div class="bg-white shadow-md rounded-lg p-6">
+                <slot />
+            </div>
+        </main>
     </div>
 </template>
